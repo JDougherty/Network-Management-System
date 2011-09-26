@@ -1,0 +1,16 @@
+Network Management System
+by Joseph W. Dougherty, Mathew Heffler, Thomas Rozanski
+
+A web-based tool to assist in the management of network autonomous systems. 
+
+License
+The Network Management System is released under the New BSD License, a 
+copy of which is included in file `LICENSE`.
+
+Mukkai S. Krishnamoorthy - http://www.cs.rpi.edu/~moorthy/ - For support as
+faculty supervisor
+
+Sean O'Sullivan - For financial contribution to the Rensselaer Center for
+Open-source Software and funding this project
+
+
