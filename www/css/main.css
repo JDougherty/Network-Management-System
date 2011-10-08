@@ -1,0 +1,201 @@
+html, body {
+	font-family: Calibri, arial, sans-serif;
+	height: 100%;
+	min-height: 100%;
+	width: 100%;
+}
+
+a {
+	color: #394959;
+	outline: none;
+	text-decoration:none;
+}
+
+	a:hover{
+		color: #666666;
+		text-decoration: underline;
+	}
+
+input[type="text"], input[type="password"], select, textarea {
+	background-color: #FFFFFF;
+	border: 1px solid #B7B7B7;
+	color: #666666;
+    padding: 5px 0 5px 5px;
+	width: 300px;
+	
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+	input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+		border: 1px solid #71869B;
+		color: #666666;
+	}
+
+select {
+	width: 307px;
+}	
+	
+input[type="submit"] {
+	background: url(../images/buttonbg.png) top;
+	border: 1px solid #181818;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 11pt;
+	font-weight: bold;
+	height: 34px;
+	opacity: 1;
+	padding: 0 20px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #000000;
+}
+
+	input[type="submit"]:active {
+		background-position: bottom;
+	}
+	
+	input[type="submit"]:hover {
+		opacity: .95;
+	}
+
+strong {
+	font-weight: bold;
+}
+
+#container {
+	background-color: #FFFFFF;
+	height: auto;
+	min-height: 100%;
+	min-width: 750px;
+	position: relative; /* Needed for footer positioning*/
+	width: 100%;
+}
+
+#header {
+	background-color: #D1E475;
+	border: 0px solid #181818;
+	border-width: 10px 0 2px 0;
+	position: relative;
+	height: 105px;
+	width: 100%;
+	z-index: 1;
+}
+	
+	#header .logo {
+		float: left;
+		margin: 14px 0 0 14px;
+	}
+			
+#breadcrumbs {
+	background: url("../images/breadcrumbbg.png") top left repeat-x;
+	border-bottom: 1px solid #070708;
+	clear: both;
+	height: 30px;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+
+	#breadcrumbs ul {
+		list-style: none;
+	}
+
+		#breadcrumbs ul li {
+			background: url("../images/breadcrumbbg.png") bottom left repeat-x;
+			height: 30px;
+			float: left;
+		}
+		
+			#breadcrumbs  ul li.home {
+				background: none;
+			}
+		
+			#breadcrumbs ul li:last-child {
+				background: none;
+			}
+		
+			#breadcrumbs a, #breadcrumbs p {
+				background: url("../images/breadcrumbarrow.png") top left no-repeat;
+				color: #FFFFFF;
+				display: block;
+				font-size: 12pt;
+				height: 30px;
+				padding: 6px 10px 0px 25px;
+				text-shadow: 0 0 0 transparent, 0px 1px 3px rgba(0,0,0,.8); /* 0 0 0 transparent is a chrome hack so it doesnt look aliased http://code.google.com/p/chromium/issues/detail?id=23440 */
+			}
+			
+				#breadcrumbs a.home {
+					background: none;
+					padding: 2px 0 0 5px;
+				}
+
+				#breadcrumbs a:hover {
+					text-decoration: underline;
+				}
+
+#content {
+	padding: 25px 15px 40px 15px;
+}
+
+	#content > h1 {
+		color: #394959;
+		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-weight: bold;
+		font-size: 17pt;
+	}
+
+	#content > h2 {
+		color: #394959;
+		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-weight: bold;
+		font-size: 12pt;
+	}
+
+	#content > p {
+		line-height: 15pt;
+		margin-bottom: 10px;
+		text-align: justify;
+		text-indent: 40px;
+	}
+
+#footer {
+	background-color: #D1E475;
+	border-top: 2px solid #181818;
+	bottom: 0;
+	height: 20px;
+	position: absolute;
+	width: 100%;
+}
+
+:focus {
+	outline: none;
+}
+
+::-moz-focus-inner {
+	border: 0;
+}
+
+::-moz-selection {
+	background-color: #86B8E7;
+	color: #FFFFFF;
+}
+
+::selection {
+	background-color: #86B8E7;
+	color: #FFFFFF;
+}
+
+.no_select {
+	user-select: none;
+	-khtml-user-select: none;
+	-o-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.clear {
+	clear: both;
+}
