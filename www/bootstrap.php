@@ -1,5 +1,7 @@
 <?php
 
+// Per server configuration
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
