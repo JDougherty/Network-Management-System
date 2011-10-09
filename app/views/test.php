@@ -4,8 +4,9 @@ function clean_snmp_array($_arr){
   $_ret=array();
   foreach($_arr as $v){
     $v = explode(":", $v);
-    $v = $v[1];
-    array_push($_ret, $v);
+    if(count($v)>1){
+    	$v = $v[1];
+    	array_push($_ret, $v);}
   }
   return $_ret;
 }
@@ -23,7 +24,7 @@ function clean_snmp_array($_arr){
     echo "<h2>Interfaces</h2>";
     
     $ifDescr = 			clean_snmp_array(snmp2_walk($_GET['address'],"$community","1.3.6.1.2.1.2.2.1.2",50000));
-	$ifType = 			clean_snmp_array(snmp2_walk($_GET['address'],"$community","1.3.6.1.2.1.2.2.1.3",50000));
+    $ifType = 			clean_snmp_array(snmp2_walk($_GET['address'],"$community","1.3.6.1.2.1.2.2.1.3",50000));
     $ifMtu = 			clean_snmp_array(snmp2_walk($_GET['address'],"$community","1.3.6.1.2.1.2.2.1.4",50000));
     $ifSpeed = 			clean_snmp_array(snmp2_walk($_GET['address'],"$community","1.3.6.1.2.1.2.2.1.5",50000));
     $ifPhysAddress = 	clean_snmp_array(snmp2_walk($_GET['address'],"$community","1.3.6.1.2.1.2.2.1.6",50000));
@@ -47,7 +48,7 @@ function clean_snmp_array($_arr){
 	$ipRouteNextHop = 	clean_snmp_array(snmprealwalk($_GET['address'],"$community","1.3.6.1.2.1.4.21.1.7",50000));
 	
 	echo "<table style='width:50%;margin-left:auto;margin-right:auto;'><tr><td>Protocol</td><td>Route</td><td>Metric</td><td>Next Hop</td></tr>";
-	for($i=0; $i<count($ifDescr); $i++) {
+	for($i=0; $i<count($ipRouteProto); $i++) {
 		echo "<tr>
 			<td>{$ipRouteProto[$i]}</td>
 			<td>{$ipRouteDest[$i]}</td>
