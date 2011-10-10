@@ -39,7 +39,7 @@
  */
 
  # From config/config.php
-	define('BASE_URL', 'http://localhost/NMS/www/');
+	define('BASE_URL', 'http://localhost/Network-Management-System/www/');
 	
  # From config/database.php
  function return_db(){

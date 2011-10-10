@@ -75,7 +75,7 @@ strong {
 }
 
 #header {
-	background-color: #D1E475;
+	background-color: #7D93B3;
 	border: 0px solid #181818;
 	border-width: 10px 0 2px 0;
 	position: relative;
@@ -91,7 +91,7 @@ strong {
 			
 #breadcrumbs {
 	background: url("../images/breadcrumbbg.png") top left repeat-x;
-	border-bottom: 1px solid #070708;
+	border-bottom: 2px solid #070708;
 	clear: both;
 	height: 30px;
 	position: relative;
@@ -162,7 +162,7 @@ strong {
 	}
 
 #footer {
-	background-color: #D1E475;
+	background-color: #7D93B3;
 	border-top: 2px solid #181818;
 	bottom: 0;
 	height: 20px;
