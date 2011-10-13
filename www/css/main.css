@@ -137,28 +137,52 @@ strong {
 				}
 
 #content {
-	padding: 25px 15px 40px 15px;
+	padding: 15px 15px 40px 15px;
 }
 
 	#content > h1 {
 		color: #394959;
 		font-family: 'AllerRegular', "Times New Roman", Times, serif;
-		font-weight: bold;
 		font-size: 17pt;
+		font-weight: bold;
+		margin: 0 0 10px 0;
 	}
 
 	#content > h2 {
 		color: #394959;
 		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-size: 15pt;
 		font-weight: bold;
-		font-size: 12pt;
+		margin: 0 0 8px 8px;
 	}
 
-	#content > p {
-		line-height: 15pt;
-		margin-bottom: 10px;
-		text-align: justify;
-		text-indent: 40px;
+	#content > h3 {
+		color: #394959;
+		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-size: 12pt;
+		font-weight: bold;
+		margin: 4px 0 4px 8px;
+	}
+	
+	#content > ul {
+		margin: 4px 0 8px 15px;
+	}
+	
+	#content table {
+		margin: 0 auto;
+		width: 50%;
+	}
+	
+	#content th {
+		color: #394959;
+		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-size: 12pt;
+		font-weight: bold;
+		padding: 0 0 4px 0;
+	}
+	
+	#content td {
+		text-align: center;
 	}
 
 #footer {
