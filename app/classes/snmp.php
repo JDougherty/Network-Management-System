@@ -26,9 +26,15 @@ class SNMP
 		return $_ret;
 	}
 	
-	public function walk($object_id, $timeout = 50000)
+	public function walk($object_id, $timeout = 5000)
 	{
-		return $this->clean_array(snmp2_walk($this->host, $this->community, $object_id, $timeout));
+		$array = @snmp2_walk($this->host, $this->community, $object_id, $timeout);
+		
+		// We often do many consecutive walks; it is easier to just throw an exception and 
+		// catch it than check every result after every walk
+		if ($array === False) throw new Exception("Walk failed.");
+		
+		return $this->clean_array($array);
 	}
 
 }

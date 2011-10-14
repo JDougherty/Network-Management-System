@@ -20,7 +20,9 @@ class Home extends CI_Controller
 	
 		if ($this->form_validation->run())
 		{
-			$data['router'] = new Router('128.213.10.1', 'ACADRW');
+			$router = new Router($this->input->post('host'), $this->input->post('community'));
+			if ($router->exists()) $data['router'] = $router;
+			else $data['message'] = "Unable to communicate with router.";
 		}
 		
 		$data['content'] = 'test';

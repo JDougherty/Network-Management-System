@@ -6,13 +6,11 @@ include APPPATH . 'classes/router/routes.php';
 
 class Router
 {
-	private $snmp = NULL;
+	private $snmp;
 	
-	public $host = "";
-	public $community = "";
-	
-	public $interfaces = NULL;
-	public $routes = NULL;
+	public $host, $community;
+	public $interfaces, $routes;
+	public $exists = False;
 
 	function __construct($host, $community)
 	{
@@ -20,10 +18,23 @@ class Router
 		$this->community = $community;
 		
 		$this->snmp = new SNMP($host, $community);
+
 		$this->interfaces = new Interfaces($this->snmp);
 		$this->routes = new Routes($this->snmp);
+		
+		$this->update();
 	}
-
+	
+	public function update()
+	{
+		$this->exists = $this->interfaces->update() && $this->routes->update();
+		return $this->exists;
+	}
+	
+	public function exists()
+	{
+		return $this->exists;
+	}
 }
 
 /* End of file router.php */

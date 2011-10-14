@@ -47,6 +47,9 @@
 <?php else: ?>
 	<?php echo form_open(); ?>
 		<div>
+			<?php if(isset($message)): ?>
+				<div><?php echo $message; ?></div>
+			<?php endif; ?>
 			<label>
 				<div>Host:<span class="error"><?php echo form_error('host'); ?></span></div>
 				<?php echo form_input($host); ?>

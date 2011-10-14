@@ -3,16 +3,35 @@
 class Routes implements Countable, Iterator
 {
 	public $protocol, $destination, $metric_1, $next_hop;
-	private $cursor;
+	private $snmp, $cursor;
 
 	function __construct(&$snmp)
 	{
-		$this->protocol		= $snmp->walk("1.3.6.1.2.1.4.21.1.9", 50000);
-		$this->destination	= $snmp->walk("1.3.6.1.2.1.4.21.1.1", 50000);
-		$this->metric_1		= $snmp->walk("1.3.6.1.2.1.4.21.1.3", 50000);
-		$this->next_hop		= $snmp->walk("1.3.6.1.2.1.4.21.1.7", 50000);
+		$this->snmp = $snmp;
+	}
+	
+	public function update()
+	{
+		try
+		{
+			$this->protocol		= $this->snmp->walk("1.3.6.1.2.1.4.21.1.9");
+			$this->destination	= $this->snmp->walk("1.3.6.1.2.1.4.21.1.1");
+			$this->metric_1		= $this->snmp->walk("1.3.6.1.2.1.4.21.1.3");
+			$this->next_hop		= $this->snmp->walk("1.3.6.1.2.1.4.21.1.7");
 		
-		$this->cursor		= -1;
+			$this->cursor		= -1;
+			
+			return True;
+		}
+		catch(exception $e)
+		{
+			$this->protocol		= array();
+			$this->destination	= array();
+			$this->metric_1		= array();
+			$this->next_hop		= array();
+			
+			return False;
+		}
 	}
 	
 	public function count()

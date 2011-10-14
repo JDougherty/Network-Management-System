@@ -3,17 +3,37 @@
 class Interfaces implements Countable, Iterator
 {
 	public $description, $type, $mtu, $speed, $mac;
-	private $cursor;
+	private $snmp, $cursor;
 
 	function __construct(&$snmp)
 	{
-		$this->description	= $snmp->walk("1.3.6.1.2.1.2.2.1.2", 50000);
-		$this->type			= $snmp->walk("1.3.6.1.2.1.2.2.1.3", 50000);
-		$this->mtu			= $snmp->walk("1.3.6.1.2.1.2.2.1.4", 50000);
-		$this->speed		= $snmp->walk("1.3.6.1.2.1.2.2.1.5", 50000);
-		$this->mac			= $snmp->walk("1.3.6.1.2.1.2.2.1.6", 50000);
-		
-		$this->cursor		= -1;
+		$this->snmp = $snmp;
+	}
+	
+	public function update()
+	{
+		try
+		{
+			$this->description	= $this->snmp->walk("1.3.6.1.2.1.2.2.1.2");
+			$this->type			= $this->snmp->walk("1.3.6.1.2.1.2.2.1.3");
+			$this->mtu			= $this->snmp->walk("1.3.6.1.2.1.2.2.1.4");
+			$this->speed		= $this->snmp->walk("1.3.6.1.2.1.2.2.1.5");
+			$this->mac			= $this->snmp->walk("1.3.6.1.2.1.2.2.1.6");
+			
+			$this->cursor		= -1;
+			
+			return True;
+		}
+		catch(exception $e)
+		{
+			$this->description	= array();
+			$this->type			= array();
+			$this->mtu			= array();
+			$this->speed		= array();
+			$this->mac			= array();
+			
+			return False;
+		}
 	}
 	
 	public function count()
