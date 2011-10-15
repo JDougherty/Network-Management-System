@@ -39,6 +39,7 @@ class SNMP
 			
 		}
 		return $_ret;
+	}
 	
 	public function walk($object_id, $timeout = 5000)
 	{
