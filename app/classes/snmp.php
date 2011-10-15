@@ -33,10 +33,8 @@ class SNMP
 			}*/
 			
 			// This way is good, since it just skips the value type
-			echo "<!-- $v -->\n";
 			$colon_pos = strpos($v, ":");
 			$v = substr($v,$colon_pos+1 , strlen($v) - $colon_pos);
-			echo " <!-- $v -->\n";
 			array_push($_ret, $v);
 			
 		}
