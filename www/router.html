@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<title>Network Management System</title>
+		
+		<link type="text/css" rel="stylesheet" href="http://localhost/Network-Management-System/www/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="http://localhost/Network-Management-System/www/css/main.css" />
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jcanvas.min.js"></script>
+		<script type="text/javascript" src="js/classes.js"></script>
+		<script>
+			function clear(canvas, context)
+			{
+				context.clearRect (0, 0, canvas[0].width, canvas[0].height);
+				context.save();
+			}
+			
+			var canvas, context, ghostCanvas, ghostContext;
+			var mouse;
+			var objects;
+			var activeObject = null;
+			
+			var scale = 1.0;
+			var scaleMultiplier = 0.8;
+			
+			$(document).ready(function() {
+				canvas = $('#canvas');
+				context = $('#canvas')[0].getContext('2d');
+				ghostCanvas = $('<canvas></canvas>');
+				ghostCanvas[0].height = canvas[0].height;
+				ghostCanvas[0].width = canvas[0].width;
+				ghostContext = ghostCanvas[0].getContext('2d');
+				
+				mouse = new Mouse();
+				
+				objects = new Objects();
+				objects.add(new Router({x:150,y:150,height:160,width:200,color:'#0E6F9C'}));
+				objects.add(new Router({x:120,y:190,height:60,width:100,color:'#0E6F9C'}));
+				objects.draw(canvas);
+				
+				box = new BoundingBox({color:'#CC0000',color2:'#990000'});
+				
+				canvas.mousemove(function(e) {
+					mouse.update(e.pageX, e.pageY);
+					
+					if (activeObject !== null)
+					{
+						if (mouse.down)
+						{
+							if (mouse.resizing)
+							{
+								activeObject.resize(mouse.resizingCorner, mouse.diffX, mouse.diffY);
+								box.update({x: activeObject.x, y: activeObject.y, height: activeObject.height, width: activeObject.width});
+							}
+							else
+							{
+								activeObject.update({x: activeObject.x + mouse.diffX, y: activeObject.y + mouse.diffY});
+								box.update({x: activeObject.x, y: activeObject.y});
+							}
+							clear(canvas, context);
+							objects.draw(canvas);
+							box.draw(canvas);	
+						}
+						else
+						{
+							var boxCorner = box.getCornerID(ghostCanvas, ghostContext, mouse.X, mouse.Y);
+							canvas.css('cursor', mouse.cursor(boxCorner));
+						}
+					}
+					
+					$('#status').html(mouse.X + ', ' + mouse.Y + '<br/>' + mouse.diffX + ', ' + mouse.diffY);
+				});
+				
+				canvas.mousedown(function(e) {
+					mouse.down = true;
+					
+					var boxCorner = box.getCornerID(ghostCanvas, ghostContext, mouse.X, mouse.Y);
+					
+					if (boxCorner >= 0)
+					{
+						mouse.resizing = true;
+						mouse.resizingCorner = boxCorner;
+					}
+					else
+					{
+						activeObject = objects.getClicked(ghostCanvas, ghostContext, mouse.X, mouse.Y);
+
+						if (activeObject !== null)
+						{
+							clear(canvas, context);
+							objects.draw(canvas);
+							box.update({x: activeObject.x, y: activeObject.y, height: activeObject.height, width: activeObject.width});
+							box.draw(canvas);
+						}
+					}
+				});
+	 
+				canvas.mouseup(function(e) {
+					mouse.down = false;
+					mouse.resizing = false;
+				});
+				
+				$('#slider').slider({
+					value: 0,
+					min: -5,
+					step: 1,
+					max: 5,
+					slide: function(event, ui) {
+						var scaleDown = .8, scaleUp = 1.25;
+						var change = ui.value - $(this).slider('value');
+						
+						if (change == -1)
+						{
+							context.scale(scaleDown, scaleDown);
+							ghostContext.scale(scaleDown, scaleDown);
+							mouse.scale *= scaleUp;
+						}
+						else if (change == 1)
+						{
+							context.scale(scaleUp, scaleUp);
+							ghostContext.scale(scaleUp, scaleUp);
+							mouse.scale *= scaleDown;
+						}
+						clear(canvas, context);
+						objects.draw(canvas);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="600">Your browser does not support the &lt;CANVAS&gt; element !</canvas>
+		<div id="slider"></div>
+		<div id="status"></div>
+		<div id="status2"></div>
+		<div id="status3"></div>
+	</body>
+</html>
