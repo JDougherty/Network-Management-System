@@ -89,11 +89,12 @@
 					else
 					{
 						activeObject = objects.getClicked(ghostCanvas, ghostContext, mouse.X, mouse.Y);
+						
+						clear(canvas, context);
+						objects.draw(canvas);
 
 						if (activeObject !== null)
 						{
-							clear(canvas, context);
-							objects.draw(canvas);
 							box.update({x: activeObject.x, y: activeObject.y, height: activeObject.height, width: activeObject.width});
 							box.draw(canvas);
 						}
