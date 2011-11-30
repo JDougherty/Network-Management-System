@@ -2,7 +2,9 @@
 
 class Interfaces implements Countable, Iterator
 {
-	public $description, $type, $mtu, $speed, $mac;
+	// These variable names should be derived from the name given by the OID
+	public $ifIndex, $description, $type, $mtu, $speed, $mac,
+		$ipAdEntAdd, $ipAdEntNetMask;
 	private $snmp, $cursor;
 
 	function __construct(&$snmp)
@@ -14,11 +16,30 @@ class Interfaces implements Countable, Iterator
 	{
 		try
 		{
+			
+			$this->ifIndex		= $this->snmp->walk("1.3.6.1.2.1.2.2.1.1");
 			$this->description	= $this->snmp->walk("1.3.6.1.2.1.2.2.1.2");
 			$this->type			= $this->snmp->walk("1.3.6.1.2.1.2.2.1.3");
 			$this->mtu			= $this->snmp->walk("1.3.6.1.2.1.2.2.1.4");
 			$this->speed		= $this->snmp->walk("1.3.6.1.2.1.2.2.1.5");
 			$this->mac			= $this->snmp->walk("1.3.6.1.2.1.2.2.1.6");
+			
+			/* The IP-MIB is terribly designed and the OID to find an IP address
+			** actually includes the IP address in the OID... 
+			** So we have to do some workaround to directly associate the 
+			** address with the interfaces ifIndex. 
+			*/
+			$ipAdEntAddr		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.1");
+			$ipAdEntIfIndex		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.2");
+			$ipAdEntNetMask		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.3");
+			
+			$ipAdEntIfIndex_ipAdEntAdd 		= array_combine($ipAdEntIfIndex, $ipAdEntAddr );
+			$ipAdEntIfIndex_ipAdEntNetMask	= array_combine($ipAdEntIfIndex, $ipAdEntNetMask );
+			
+			
+			
+			
+			
 			
 			$this->cursor		= -1;
 			
