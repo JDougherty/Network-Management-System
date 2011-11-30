@@ -48,9 +48,12 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 
-		$this->load->set_base_classes()->ci_autoloader();
-		
+		$this->load->_base_classes =& is_loaded();
+
+		$this->load->_ci_autoloader();
+
 		log_message('debug', "Controller Class Initialized");
+
 	}
 
 	public static function &get_instance()
@@ -61,4 +64,4 @@ class CI_Controller {
 // END Controller class
 
 /* End of file Controller.php */
-/* Location: ./ci/core/Controller.php */
+/* Location: ./system/core/Controller.php */

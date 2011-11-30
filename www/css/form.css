@@ -1,0 +1,97 @@
+body {
+	background-color: #7D93B3;
+}
+
+p {
+	margin: 10px;
+}
+
+label {
+	display: block;
+	font-style: italic;
+	margin-bottom: 5px;
+}
+
+	label.checkbox {
+		margin: 8px 0 0 8px;
+		float: left;
+		font-style: normal;
+	}
+
+input {
+	margin-bottom: 15px;
+}
+
+	input[type='checkbox'] {
+		margin-top: 10px;
+		float: left;
+	}
+	
+h1 {
+	font-size: 16pt;
+	font-weight: 700;
+	margin-bottom: 15px;
+	text-align: center;
+}
+	
+h2 {
+	font-size: 14pt;
+	font-weight: bold;
+	margin: 2px 0 2px 0;
+}
+
+div.row {
+	height: 40px;
+	width: 100%;
+}
+
+table {
+	margin: 0 0 12px 10px;
+}
+		
+	td:first-child {
+		width: 240px;
+	}
+
+#container {
+	margin: 0 auto;
+	padding: 60px 0 60px 0;
+	width: 390px;
+}
+
+	#logo {
+		height: 90px;
+		margin: 0 auto;
+		width: 322px;
+	}
+	
+	#content {
+		background-color: #F3F3F4;
+		border: 1px solid #122747;
+		padding: 20px 40px 20px 40px;
+		width: 310px;
+	}
+	
+		#submit_row {
+			height: 40px;
+			margin-top: 10px;
+		}
+			
+			#submit_row input[type='submit'] {
+				float: right;
+			}
+			
+		#quick_links {
+			clear: both;
+			margin: 10px 0 0 55px;
+			font-size: 13pt;
+		}
+		
+			.vr {
+				color: #7F7F7F;
+				padding: 0 5px 0 5px;
+			}
+			
+.center {
+	text-align: center;
+}

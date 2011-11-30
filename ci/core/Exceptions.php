@@ -128,7 +128,7 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include(APPPATH.'errors/'.$template.'.php');
+		include(APPPATH.'errors/'.$template.EXT);
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		return $buffer;
@@ -164,7 +164,7 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include(APPPATH.'errors/error_php.php');
+		include(APPPATH.'errors/error_php'.EXT);
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		echo $buffer;
@@ -175,4 +175,4 @@ class CI_Exceptions {
 // END Exceptions Class
 
 /* End of file Exceptions.php */
-/* Location: ./ci/core/Exceptions.php */
+/* Location: ./system/core/Exceptions.php */

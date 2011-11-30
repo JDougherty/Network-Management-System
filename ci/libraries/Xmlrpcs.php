@@ -609,4 +609,4 @@ class CI_Xmlrpcs extends CI_Xmlrpc
 
 
 /* End of file Xmlrpcs.php */
-/* Location: ./ci/libraries/Xmlrpcs.php */
+/* Location: ./system/libraries/Xmlrpcs.php */

@@ -628,10 +628,6 @@ class CI_Form_validation {
 							$this->_field_data[$row['field']]['postdata'] = (is_bool($result)) ? $postdata : $result;
 						}
 					}
-					else
-					{
-						log_message('debug', "Unable to find validation rule: ".$rule);
-					}
 
 					continue;
 				}
@@ -1361,4 +1357,4 @@ class CI_Form_validation {
 // END Form Validation Class
 
 /* End of file Form_validation.php */
-/* Location: ./ci/libraries/Form_validation.php */
+/* Location: ./system/libraries/Form_validation.php */

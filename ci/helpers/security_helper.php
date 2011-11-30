@@ -125,4 +125,4 @@ if ( ! function_exists('encode_php_tags'))
 
 
 /* End of file security_helper.php */
-/* Location: ./ci/helpers/security_helper.php */
+/* Location: ./system/helpers/security_helper.php */

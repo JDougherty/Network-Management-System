@@ -1068,4 +1068,4 @@ class CI_Jquery extends CI_Javascript {
 }
 
 /* End of file Jquery.php */
-/* Location: ./ci/libraries/Jquery.php */
+/* Location: ./system/libraries/Jquery.php */

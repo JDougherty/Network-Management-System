@@ -672,11 +672,11 @@ class CI_Input {
 	 */
 	public function is_cli_request()
 	{
-		return (php_sapi_name() == 'cli') or defined('STDIN');
+		return (bool) defined('STDIN');
 	}
 
 }
 // END Input class
 
 /* End of file Input.php */
-/* Location: ./ci/core/Input.php */
+/* Location: ./system/core/Input.php */

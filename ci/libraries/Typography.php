@@ -407,4 +407,4 @@ class CI_Typography {
 // END Typography Class
 
 /* End of file Typography.php */
-/* Location: ./ci/libraries/Typography.php */
+/* Location: ./system/libraries/Typography.php */

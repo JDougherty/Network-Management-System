@@ -53,4 +53,4 @@ class CI_Model {
 // END Model Class
 
 /* End of file Model.php */
-/* Location: ./ci/core/Model.php */
+/* Location: ./system/core/Model.php */

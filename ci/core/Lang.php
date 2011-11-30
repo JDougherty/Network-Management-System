@@ -51,14 +51,14 @@ class CI_Lang {
 	 */
 	function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '')
 	{
-		$langfile = str_replace('.php', '', $langfile);
+		$langfile = str_replace(EXT, '', $langfile);
 
 		if ($add_suffix == TRUE)
 		{
 			$langfile = str_replace('_lang.', '', $langfile).'_lang';
 		}
 
-		$langfile .= '.php';
+		$langfile .= EXT;
 
 		if (in_array($langfile, $this->is_loaded, TRUE))
 		{
@@ -129,19 +129,19 @@ class CI_Lang {
 	 */
 	function line($line = '')
 	{
-		$value = ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
+		$line = ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
 
 		// Because killer robots like unicorns!
-		if ($value === FALSE)
+		if ($line === FALSE)
 		{
 			log_message('error', 'Could not find the language line "'.$line.'"');
 		}
 
-		return $value;
+		return $line;
 	}
 
 }
 // END Language Class
 
 /* End of file Lang.php */
-/* Location: ./ci/core/Lang.php */
+/* Location: ./system/core/Lang.php */

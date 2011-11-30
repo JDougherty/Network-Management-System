@@ -868,4 +868,4 @@ class CI_Javascript {
 // END Javascript Class
 
 /* End of file Javascript.php */
-/* Location: ./ci/libraries/Javascript.php */
+/* Location: ./system/libraries/Javascript.php */

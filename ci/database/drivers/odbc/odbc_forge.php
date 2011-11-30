@@ -263,4 +263,4 @@ class CI_DB_odbc_forge extends CI_DB_forge {
 }
 
 /* End of file odbc_forge.php */
-/* Location: ./ci/database/drivers/odbc/odbc_forge.php */
+/* Location: ./system/database/drivers/odbc/odbc_forge.php */

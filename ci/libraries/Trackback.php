@@ -545,4 +545,4 @@ class CI_Trackback {
 // END Trackback Class
 
 /* End of file Trackback.php */
-/* Location: ./ci/libraries/Trackback.php */
+/* Location: ./system/libraries/Trackback.php */

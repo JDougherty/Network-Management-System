@@ -176,4 +176,4 @@ class CI_DB_sqlite_result extends CI_DB_result {
 
 
 /* End of file sqlite_result.php */
-/* Location: ./ci/database/drivers/sqlite/sqlite_result.php */
+/* Location: ./system/database/drivers/sqlite/sqlite_result.php */

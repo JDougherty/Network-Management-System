@@ -229,13 +229,13 @@ if ( ! function_exists('_get_smiley_array'))
 {
 	function _get_smiley_array()
 	{
-		if (defined('ENVIRONMENT') AND file_exists(APPPATH.'config/'.ENVIRONMENT.'/smileys.php'))
+		if (defined('ENVIRONMENT') AND file_exists(APPPATH.'config/'.ENVIRONMENT.'/smileys'.EXT))
 		{
-		    include(APPPATH.'config/'.ENVIRONMENT.'/smileys.php');
+		    include(APPPATH.'config/'.ENVIRONMENT.'/smileys'.EXT);
 		}
-		elseif (file_exists(APPPATH.'config/smileys.php'))
+		elseif (file_exists(APPPATH.'config/smileys'.EXT))
 		{
-			include(APPPATH.'config/smileys.php');
+			include(APPPATH.'config/smileys'.EXT);
 		}
 		
 		if (isset($smileys) AND is_array($smileys))
@@ -278,4 +278,4 @@ EOF;
 
 
 /* End of file smiley_helper.php */
-/* Location: ./ci/helpers/smiley_helper.php */
+/* Location: ./system/helpers/smiley_helper.php */
