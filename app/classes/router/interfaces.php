@@ -24,22 +24,6 @@ class Interfaces implements Countable, Iterator
 			$this->speed		= $this->snmp->walk("1.3.6.1.2.1.2.2.1.5");
 			$this->mac			= $this->snmp->walk("1.3.6.1.2.1.2.2.1.6");
 			
-			/* The IP-MIB is terribly designed and the OID to find an IP address
-			** actually includes the IP address in the OID... 
-			** So we have to do some workaround to directly associate the 
-			** address with the interfaces ifIndex. 
-			*/
-			$ipAdEntAddr		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.1");
-			$ipAdEntIfIndex		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.2");
-			$ipAdEntNetMask		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.3");
-			
-			$ipAdEntIfIndex_ipAdEntAdd 		= array_combine($ipAdEntIfIndex, $ipAdEntAddr );
-			$ipAdEntIfIndex_ipAdEntNetMask	= array_combine($ipAdEntIfIndex, $ipAdEntNetMask );
-			
-			
-			
-			
-			
 			
 			$this->cursor		= -1;
 			
@@ -76,6 +60,7 @@ class Interfaces implements Countable, Iterator
 	public function current()
 	{
 		$data = new stdClass();
+		$data->ifIndex	= $this->ifIndex[$this->cursor];
 		$data->description	= $this->description[$this->cursor];
 		$data->type			= $this->type[$this->cursor];
 		if ($data->type == 6)
@@ -83,6 +68,23 @@ class Interfaces implements Countable, Iterator
 			$data->mtu			= $this->mtu[$this->cursor];
 			$data->speed		= $this->speed[$this->cursor];
 			$data->mac			= $this->mac[$this->cursor];
+			
+			
+			/* The IP-MIB is terribly designed and the OID to find an IP address
+			** actually includes the IP address in the OID... 
+			** So we have to do some workaround to directly associate the 
+			** address with the interfaces ifIndex. 
+			*/
+			$ipAdEntAddr		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.1");
+			$ipAdEntIfIndex		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.2");
+			$ipAdEntNetMask		= $this->snmp->walk("1.3.6.1.2.1.4.20.1.3");
+			
+			$ipAdEntIfIndex_ipAdEntAdd 		= array_combine($ipAdEntIfIndex, $ipAdEntAddr );
+			$ipAdEntIfIndex_ipAdEntNetMask	= array_combine($ipAdEntIfIndex, $ipAdEntNetMask );
+			
+			$data->ipAdEntAdd = $ipAdEntIfIndex_ipAdEntAdd[$data->ifIndex];
+			$data->ipAdEntNetMask = $ipAdEntIfIndex_ipAdEntNetMask[$data->ifIndex];
+			
 		}
 		return $data;
 	}

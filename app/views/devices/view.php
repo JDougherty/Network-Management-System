@@ -9,6 +9,9 @@
 				<li>MTU: <?php echo $interface->mtu; ?></li>
 				<li>Speed: <?php echo $interface->speed; ?></li>
 				<li>MAC: <?php echo $interface->mac; ?></li>
+				<li>IP Address: <?php echo $interface->ipAdEntAdd; ?></li>
+				<li>Subnet Mask: <?php echo $interface->ipAdEntNetMask; ?></li>
+				<li>Network Address: <?php echo long2ip(ip2long($interface->ipAdEntNetMask) & ip2long($interface->ipAdEntAdd)); ?></li>
 			</ul>
 		<?php endif; ?>
 	<?php endforeach; ?>
