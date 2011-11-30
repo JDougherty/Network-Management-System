@@ -16,11 +16,26 @@
 	width: 100%;
 	z-index: 1;
 }
+
+	#header a {
+		color: #FFFFFF;
+	}
 	
 	#header .logo {
 		float: left;
 		margin: 14px 0 0 14px;
 	}
+	
+	#header ul {
+		float: right;
+		margin: 10px 20px 0 0;
+	}
+	
+		#header ul li {
+			float: left;
+			list-style: none outside none;
+			margin-left: 15px;
+		}
 			
 #breadcrumbs {
 	background: url("../images/breadcrumbbg.png") top left repeat-x;
@@ -75,7 +90,7 @@
 
 	#content > h1 {
 		color: #394959;
-		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-size: 17pt;
 		font-weight: bold;
 		margin: 0 0 10px 0;
@@ -83,7 +98,7 @@
 
 	#content > h2 {
 		color: #394959;
-		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-size: 15pt;
 		font-weight: bold;
 		margin: 0 0 8px 8px;
@@ -91,7 +106,7 @@
 
 	#content > h3 {
 		color: #394959;
-		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-size: 12pt;
 		font-weight: bold;
 		margin: 4px 0 4px 8px;
@@ -108,7 +123,7 @@
 	
 	#content th {
 		color: #394959;
-		font-family: 'AllerRegular', "Times New Roman", Times, serif;
+		font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-size: 12pt;
 		font-weight: bold;
 		padding: 0 0 4px 0;

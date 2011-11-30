@@ -19,6 +19,10 @@
 						<img alt="Home" src="<?php echo base_url(); ?>images/logo.png" height="82" width="322" />
 					</a>
 				</div>
+				<ul>
+					<li><a href="<?php echo base_url(); ?>">View All Devices</a></li>
+					<li><a href="<?php echo base_url(); ?>devices/add">Add Device</a></li>
+				</ul>
 			</div>
 			
 			<div id="breadcrumbs" class="no_select">

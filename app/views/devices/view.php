@@ -1,5 +1,5 @@
 <?php if(isset($router)): ?>
-	<h1>Details for <?php echo $router->host; ?></h1>
+	<h1>Details for <?php echo $router->hostname->name . '(' . $router->address . ')'; ?></h1>
 
 	<h2>Interfaces</h2>
 	<?php foreach ($router->interfaces as $interface): ?>

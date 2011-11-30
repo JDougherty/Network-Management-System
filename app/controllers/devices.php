@@ -29,10 +29,10 @@ class Devices extends CI_Controller
 		$device = new Device($id);
 		if (!$device->exists()) show_404();
 		
-		$router = new Router($device->host, $device->community);
+		$router = new Router($device->address, $device->community);
 		if ($router->exists()) $data['router'] = $router;
 		
-		$data['breadcrumbs'] = array('Devices' => '/', $device->host => '');
+		$data['breadcrumbs'] = array('Devices' => '/', $device->hostname . ' (' . $device->address . ')' => '');
 		$data['content'] = 'devices/view';
 		$this->load->view('layouts/main/index', $data);
 	}
@@ -40,19 +40,28 @@ class Devices extends CI_Controller
 	public function add()
 	{
 		$data = array();
-	
+		
 		$this->load->library(array('input', 'form_validation'));
-		$this->form_validation->set_rules('host', 'host', 'required');
+		$this->form_validation->set_rules('address', 'address', 'required');
 		$this->form_validation->set_rules('community', 'community', 'required');
 	
 		if ($this->form_validation->run())
 		{
-			$device = new Device();
-			$device->label = $this->input->post('label');
-			$device->host = $this->input->post('host');
-			$device->community = $this->input->post('community');
+			$router = new Router($this->input->post('address'), $this->input->post('community'));
 			
-			$data['added'] = $device->save();
+			if ($router->exists())
+			{
+				$device = new Device();
+				$device->hostname = $router->hostname->name;
+				$device->address = $this->input->post('address');
+				$device->community = $this->input->post('community');
+			
+				$data['added'] = $device->save();
+			}
+			else
+			{
+				$data['added'] = False;
+			}
 		}
 		
 		$data['breadcrumbs'] = array('Devices' => '/', 'Add' => '');

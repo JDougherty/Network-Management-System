@@ -46,8 +46,8 @@ class Idb_model extends CI_Model
 	{
 		$sql = 	"CREATE TABLE IF NOT EXISTS `devices` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
-				  `label` varchar(128) NOT NULL,
-				  `host` varchar(128) NOT NULL,
+				  `hostname` varchar(128) NOT NULL,
+				  `address` varchar(128) NOT NULL,
 				  `community` varchar(128) NOT NULL,
 				  PRIMARY KEY (`id`)
 				 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";

@@ -1,15 +1,7 @@
 <?php
-	$label = array(
-		'name' => 'label',
-		'value'	=> set_value('label')
-	);
-	$label = array(
-		'name' => 'label',
-		'value'	=> set_value('label')
-	);
-	$host = array(
-		'name' => 'host',
-		'value'	=> set_value('host')
+	$address = array(
+		'name' => 'address',
+		'value'	=> set_value('address')
 	);
 	$community = array(
 		'name' => 'community',
@@ -34,12 +26,8 @@
 			<div><?php echo $message; ?></div>
 		<?php endif; ?>
 		<label>
-			<div>Label:<span class="error"><?php echo form_error('label'); ?></span></div>
-			<?php echo form_input($label); ?>
-		</label>
-		<label>
-			<div>Host:<span class="error"><?php echo form_error('host'); ?></span></div>
-			<?php echo form_input($host); ?>
+			<div>Address:<span class="error"><?php echo form_error('address'); ?></span></div>
+			<?php echo form_input($address); ?>
 		</label>
 		<label>
 			<div>Community:<span class="error"><?php echo form_error('community'); ?></span></div>

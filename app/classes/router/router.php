@@ -1,6 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 include APPPATH . 'classes/snmp.php';
+include APPPATH . 'classes/router/hostname.php';
 include APPPATH . 'classes/router/interfaces.php';
 include APPPATH . 'classes/router/routes.php';
 
@@ -8,17 +9,18 @@ class Router
 {
 	private $snmp;
 	
-	public $host, $community;
-	public $interfaces, $routes;
+	public $address, $community;
+	public $hostname, $interfaces, $routes;
 	public $exists = False;
 
-	function __construct($host, $community)
+	function __construct($address, $community)
 	{
-		$this->host = $host;
+		$this->address = $address;
 		$this->community = $community;
 		
-		$this->snmp = new SNMP($host, $community);
+		$this->snmp = new SNMP($address, $community);
 
+		$this->hostname = new Hostname($this->snmp);
 		$this->interfaces = new Interfaces($this->snmp);
 		$this->routes = new Routes($this->snmp);
 		
@@ -27,7 +29,7 @@ class Router
 	
 	public function update()
 	{
-		$this->exists = $this->interfaces->update() && $this->routes->update();
+		$this->exists = $this->hostname->update() && $this->interfaces->update() && $this->routes->update();
 		return $this->exists;
 	}
 	
