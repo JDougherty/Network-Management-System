@@ -34,7 +34,7 @@ class SNMP
 			
 			// This way is good, since it just skips the value type
 			$colon_pos = strpos($v, ":");
-			$v = substr($v,$colon_pos+1 , strlen($v) - $colon_pos);
+			$v = str_replace('"', '', substr($v,$colon_pos+1 , strlen($v) - $colon_pos));
 			array_push($_ret, $v);
 			
 		}
