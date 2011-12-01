@@ -101,7 +101,7 @@
 		font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-size: 15pt;
 		font-weight: bold;
-		margin: 0 0 8px 8px;
+		margin: 15px 0 8px 8px;
 	}
 
 	#content > h3 {
@@ -118,7 +118,10 @@
 	
 	#content table {
 		margin: 0 auto;
-		width: 50%;
+	}
+	
+	#content tr:hover:not(:first-child)  {
+		background-color: #CCCCCC;
 	}
 	
 	#content th {
@@ -130,8 +133,10 @@
 	}
 	
 	#content td {
+		height: 20px;
 		text-align: center;
 	}
+
 
 #footer {
 	background-color: #7D93B3;

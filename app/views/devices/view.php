@@ -1,5 +1,5 @@
 <?php if(isset($router)): ?>
-	<h1>Details for <?php echo $router->hostname->name . '(' . $router->address . ')'; ?></h1>
+	<h1><?php echo $router->hostname->name . ' (' . $router->address . ')'; ?></h1>
 
 	<h2>Interfaces</h2>
 	<?php foreach ($router->interfaces as $interface): ?>
@@ -16,10 +16,10 @@
 	<h2>Routing Table</h2>
 	<table>
 		<tr>
-			<th>Protocol</th>
-			<th>Route</th>
-			<th>Metric</th>
-			<th>Next Hop</th>
+			<th style="width: 100px">Protocol</th>
+			<th style="width: 170px">Route</th>
+			<th style="width: 100px">Metric</th>
+			<th style="width: 170px">Next Hop</th>
 		</tr>
 		<?php foreach ($router->routes as $route): ?>
 			<tr>

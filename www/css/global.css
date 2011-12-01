@@ -15,6 +15,32 @@ a {
 		color: #666666;
 		text-decoration: underline;
 	}
+	
+form {
+	margin: 10px auto 0 auto;
+	width: 610px;
+}
+
+	form .bottomrow p {
+		margin: 7px 10px 0 0;
+		float: right;
+		
+	}
+	
+	form .bottomrow input {
+		float: right;
+	}
+	
+label {
+	display: block;
+	margin: 0 0 15px 0;
+	width: 610px;
+}
+	
+	label div {
+		float: left;
+		width: 300px;
+	}
 
 input[type="text"], input[type="password"], select, textarea {
 	background-color: #FFFFFF;
@@ -43,6 +69,7 @@ input[type="submit"] {
 	border: 1px solid #181818;
 	color: #FFFFFF;
 	cursor: pointer;
+	float: right;
 	font-size: 11pt;
 	font-weight: bold;
 	height: 34px;

@@ -12,13 +12,7 @@
 	);
 ?>
 
-<?php if(isset($added)): ?>
-	<?php if($added): ?>
-		<p>Added device.</p>
-	<?php else: ?>
-		<p>Failed to add device.</p>
-	<?php endif; ?>
-<?php endif; ?>
+
 
 <?php echo form_open(); ?>
 	<div>
@@ -31,8 +25,17 @@
 		</label>
 		<label>
 			<div>Community:<span class="error"><?php echo form_error('community'); ?></span></div>
-			<?php echo form_input($community); ?>
+			<?php echo form_password($community); ?>
 		</label>
-		<?php echo form_submit($submit); ?>
+		<div class="bottomrow">
+			<?php echo form_submit($submit); ?>
+			<?php if(isset($added)): ?>
+				<?php if($added): ?>
+					<p>Added device.</p>
+				<?php else: ?>
+					<p>Failed to add device.</p>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
 	</div>
 <?php echo form_close(); ?>

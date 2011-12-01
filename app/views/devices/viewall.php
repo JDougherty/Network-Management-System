@@ -1,18 +1,20 @@
 <?php if(count($devices) > 0): ?>
-	<table>
-		<tr>
-			<th>Hostname</th>
-			<th>Address</th>
-			<th></th>
-		</tr>
-		<?php foreach ($devices as $device): ?>
+	<div id="viewall">
+		<table>
 			<tr>
-				<td><?php echo anchor("/devices/view/" . $device->id, $device->hostname); ?></td>
-				<td><?php echo $device->address; ?></td>
-				<td></td>
+				<th style="width: 260px">Hostname</th>
+				<th style="width: 160px">Address</th>
+				<th style="width: 80px"></th>
 			</tr>
-		<?php endforeach; ?>
-	</table>
+			<?php foreach ($devices as $device): ?>
+				<tr>
+					<td><?php echo anchor("/devices/view/" . $device->id, $device->hostname); ?></td>
+					<td><?php echo $device->address; ?></td>
+					<td>X</td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
 <?php else: ?>
 	<p>No devices found.</p>
 <?php endif; ?>
