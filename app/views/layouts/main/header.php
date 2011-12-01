@@ -20,8 +20,11 @@
 					</a>
 				</div>
 				<ul>
-					<li><a href="<?php echo base_url(); ?>">View All Devices</a></li>
+					<?php if (isset($id)): ?>
+						<li><a href="<?php echo base_url(); ?>devices/edit/<?php echo $id; ?>">Edit Device</a></li>
+					<?php endif; ?>
 					<li><a href="<?php echo base_url(); ?>devices/add">Add Device</a></li>
+					<li><a href="<?php echo base_url(); ?>">View All Devices</a></li>
 				</ul>
 			</div>
 			

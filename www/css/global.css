@@ -17,35 +17,20 @@ a {
 	}
 	
 form {
-	margin: 10px auto 0 auto;
-	width: 610px;
+	margin: 0 auto;
 }
-
-	form .bottomrow p {
-		margin: 7px 10px 0 0;
-		float: right;
-		
-	}
-	
-	form .bottomrow input {
-		float: right;
-	}
 	
 label {
 	display: block;
+	font-weight: bold;
 	margin: 0 0 15px 0;
-	width: 610px;
 }
-	
-	label div {
-		float: left;
-		width: 300px;
-	}
 
 input[type="text"], input[type="password"], select, textarea {
 	background-color: #FFFFFF;
 	border: 1px solid #B7B7B7;
 	color: #666666;
+	height: 22px;
     padding: 5px 0 5px 5px;
 	width: 300px;
 	
@@ -59,12 +44,18 @@ input[type="text"], input[type="password"], select, textarea {
 		border: 1px solid #71869B;
 		color: #666666;
 	}
-
-select {
-	width: 307px;
-}	
 	
-input[type="submit"] {
+	input[type="text"].fileupload {
+		width: 200px;
+	}
+	
+	input[type="file"] {
+		width: 0px;
+		height: 0px;
+		overflow: hidden;
+	}
+
+input[type="submit"], button {
 	background: url(../images/buttonbg.png) top;
 	border: 1px solid #181818;
 	color: #FFFFFF;
@@ -80,11 +71,11 @@ input[type="submit"] {
 	text-shadow: 1px 1px 0px #000000;
 }
 
-	input[type="submit"]:active {
+	input[type="submit"]:active, button:active {
 		background-position: bottom;
 	}
 	
-	input[type="submit"]:hover {
+	input[type="submit"]:hover, button:hover {
 		opacity: .95;
 	}
 

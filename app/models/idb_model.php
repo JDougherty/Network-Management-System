@@ -49,6 +49,7 @@ class Idb_model extends CI_Model
 				  `hostname` varchar(128) NOT NULL,
 				  `address` varchar(128) NOT NULL,
 				  `community` varchar(128) NOT NULL,
+				  `diagram` varchar(128) NULL,
 				  PRIMARY KEY (`id`)
 				 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
 	
