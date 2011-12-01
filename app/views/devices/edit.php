@@ -1,11 +1,11 @@
 <?php
 	$address = array(
 		'name' => 'address',
-		'value'	=> set_value('address')
+		'value'	=> set_value('address', $device->address)
 	);
 	$community = array(
 		'name' => 'community',
-		'value'	=> set_value('community')
+		'value'	=> set_value('community', $device->community)
 	);
 	$upload = array(
 		'id' => 'upload',
@@ -22,7 +22,7 @@
 		'content' => 'Select'
 	);
 	$submit = array(
-		'value' => 'Add'
+		'value' => 'Update'
 	);
 ?>
 
@@ -41,7 +41,7 @@
 	});
 </script>
 
-<?php echo form_open_multipart('/devices/add/'); ?>
+<?php echo form_open_multipart('/devices/edit/' . $id); ?>
 	<div>
 		<?php if(isset($message)): ?>
 			<div><?php echo $message; ?></div>
@@ -63,9 +63,9 @@
 			<?php echo form_submit($submit); ?>
 			<?php if(isset($saved)): ?>
 				<?php if($saved): ?>
-					<p>Added device.</p>
+					<p>Updated device.</p>
 				<?php else: ?>
-					<p>Failed to add device.</p>
+					<p>Failed to update device.</p>
 				<?php endif; ?>
 			<?php endif; ?>
 		</div>

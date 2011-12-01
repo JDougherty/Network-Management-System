@@ -1,20 +1,29 @@
 <?php if(isset($router)): ?>
-	<h1><?php echo $router->hostname->name . ' (' . $router->address . ')'; ?></h1>
-
 	<h2>Interfaces</h2>
-	<?php foreach ($router->interfaces as $interface): ?>
-		<?php if ($interface->type == 6): ?>
-			<h3><?php echo $interface->description; ?></h3>
-			<ul>
-				<li>MTU: <?php echo $interface->mtu; ?></li>
-				<li>Speed: <?php echo $interface->speed; ?></li>
-				<li>MAC: <?php echo $interface->mac; ?></li>
-				<li>IP Address: <?php echo $interface->ipAdEntAdd; ?></li>
-				<li>Subnet Mask: <?php echo $interface->ipAdEntNetMask; ?></li>
-				<li>Network Address: <?php echo long2ip(ip2long($interface->ipAdEntNetMask) & ip2long($interface->ipAdEntAdd)); ?></li>
-			</ul>
-		<?php endif; ?>
-	<?php endforeach; ?>
+	<table>
+		<tr>
+			<th style="width: 170px"></th>
+			<th style="width: 100px">MTU</th>
+			<th style="width: 100px">Speed</th>
+			<th style="width: 150px">MAC</th>
+			<th style="width: 150px">IP Address</th>
+			<th style="width: 150px">Subnet Mask</th>
+			<th style="width: 150px">Network Address</th>
+		</tr>
+		<?php foreach ($router->interfaces as $interface): ?>
+			<?php if ($interface->type == 6): ?>
+				<tr>
+					<th><?php echo $interface->description; ?></th>
+					<td><?php echo $interface->mtu; ?></td>
+					<td><?php echo $interface->speed; ?></td>
+					<td><?php echo $interface->mac; ?></td>
+					<td><?php echo $interface->ipAdEntAdd; ?></td>
+					<td><?php echo $interface->ipAdEntNetMask; ?></td>
+					<td><?php echo long2ip(ip2long($interface->ipAdEntNetMask) & ip2long($interface->ipAdEntAdd)); ?></td>
+				</tr>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</table>
 
 	<h2>Routing Table</h2>
 	<table>
@@ -33,6 +42,13 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
+	
+	<?php if (isset($diagram)): ?>
+		<h2>Diagram</h2>
+		<div style="text-align: center;">
+			<img src="<?php echo base_url() . 'images/uploads/' . $diagram; ?>" />
+		</div>
+	<?php endif; ?>
 <?php else: ?>
-	<p><?php echo $message; ?></p>
+	<p>Failed to load device.</p>
 <?php endif; ?>

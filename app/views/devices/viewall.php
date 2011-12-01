@@ -10,7 +10,7 @@
 				<tr>
 					<td><?php echo anchor("/devices/view/" . $device->id, $device->hostname); ?></td>
 					<td><?php echo $device->address; ?></td>
-					<td>X</td>
+					<td><?php echo anchor("/devices/delete/" . $device->id, "X"); ?></td>
 				</tr>
 			<?php endforeach; ?>
 		</table>
