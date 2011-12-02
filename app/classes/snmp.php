@@ -41,7 +41,7 @@ class SNMP
 		return $_ret;
 	}
 	
-	public function walk($object_id, $timeout = 5000)
+	public function walk($object_id, $timeout = 1000000)
 	{
 		$array = @snmp2_walk($this->host, $this->community, $object_id, $timeout);
 		
