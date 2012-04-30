@@ -15,4 +15,15 @@ faculty supervisor
 Sean O'Sullivan - For financial contribution to the Rensselaer Center for
 Open-source Software and funding this project
 
+Setup
+  1. Clone the repository
+  2. Modify /www/bootstrap.php, changing BASE_URL to '' if app is in root folder 
+     or put applicable value if not in root folder. 
+  3. In the same file, configure your database settings. 
+  4. Do not create database manually - instead go to index.php/idb and run through 
+     initialize process
 
+Notes
+  This application has only been tested to run under Apache. It has been reported
+  that the CodeIgniter framework used by this project does not work well under IIS, 
+  specifically regarding the rewrite rules. 
